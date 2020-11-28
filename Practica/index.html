@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora Molona</title>
+	<link rel="stylesheet" type="text/css" href="estiloCalculadora.css">
+	<script type="text/javascript" src="jsCalculadora.js"></script>
+</head>
+<body onload="canvasBasico()">
+	<h1>Calculadora Molona</h1>
+	<div class="contenedor" id="contenedor">
+			<p>
+				<input type="button" name="dIzq" value="<">
+				<input type="text" name="pantalla" class="pantalla" id="pantalla" value="">
+				<input type="button" name="dDer" value=">">
+			</p>
+			<p>
+				<input class="boton" type="button" id="+/-" value="+/-" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''"  onclick="cambiarSigno()">
+				<input class="boton" type="button" id="" value="SCI" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="sciMode()">
+				<input class="boton" type="button" id="," value="." onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" name="DEL" id="operador" value="DEL" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="borrarUltimoN()">
+			</p>
+			<p>
+				<input class="boton" type="button" id="7" value="7" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" id="8" value="8" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" id="9" value="9" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" name="division" id="operador" value="/" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="operacion(this)">
+			</p>
+			<p>
+				<input class="boton" type="button" id="4" value="4" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" id="5" value="5" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" id="6" value="6" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" name="multiplicacion" value="x" id="operador" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="operacion(this)">
+			</p>
+			<p>
+				<input class="boton" type="button" id="1" value="1" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" id="2" value="2" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" id="3" value="3" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" name="resta" value="-" id="operador" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="operacion(this)">
+			</p>
+			<p>
+				<input class="boton" type="button" name="" value="0" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pulsarTecla(this)">
+				<input class="boton" type="button" name="borrar" value="C" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="borrarOperacion()">
+				<input class="boton" type="button" name="igual" value="=" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="resultado(this)">
+				<input class="boton" type="button" name="suma" value="+" id="operador" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="operacion(this)">
+			</p>
+	</div>
+
+	<div id="skyns">
+		<form class="skyns" title="Aspectos">
+			<h3>Aspectos</h3>
+			<input type="radio" name="color" value="azul" onclick ="cambioSkyn(this)">Azul<br><br>
+			<input type="radio" name="color" value="marron" onclick ="cambioSkyn(this)">Marron<br><br>	
+			<input type="radio" name="color" value="amarilla" onclick ="cambioSkyn(this)">Amarilla<br><br>
+			<input type="radio" name="color" value="roja" onclick ="cambioSkyn(this)">Roja<br><br>
+			<input type="radio" name="color" value="clara" onclick ="cambioSkyn(this)">Clara<br><br>
+
+		</form>
+	</div>
+
+	<div class="contenedorCientifico" id="contenedorCientifico">
+			<p>
+				<canvas  class="pantallaCientifica" id="pantallaCientifica" width="290" height="140"></canvas>
+			</p>
+			<p>
+				<input class="boton" type="button" id="pi" value="PI" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="pi()">
+				<input class="boton" type="button" id="" value="Log10" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="log10()">
+				<input class="boton" type="button" id="ABS" value="ABS" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="abs()">
+				<input class="boton" type="button" name="e" value="cnstE" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="e()">
+				<input class="boton" type="button" name="ln" value="ln" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="ln()">
+			</p>
+			<p>
+				<input class="boton" type="button" value="exit" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="exit()">
+				<input class="boton" type="button" value="log2" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="log2()">
+				<input class="boton" type="button" value="COS" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="cos()">
+				<input class="boton" type="button" value="SIN" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="sin()">
+				<input class="boton" type="button"  value="TAN" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="tan()">
+			</p>
+			<p>
+				<input class="boton" type="button" value="PRINT" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="dibujar()">
+				<input class="boton" type="button" value="√" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="sqrt()">
+				<input class="boton" type="button" value="√n" onmouseover="this.style.backgroundColor='#c2c2c2'" onmouseout="this.style.backgroundColor=''" onclick="sqrtN()">
+
+			</p>
+		</div>
+</body>
+</html>
